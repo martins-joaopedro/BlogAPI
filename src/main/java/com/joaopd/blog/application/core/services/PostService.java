@@ -1,4 +1,4 @@
-package com.joaopd.blog.application.core.service;
+package com.joaopd.blog.application.core.services;
 
 import java.util.List;
 
