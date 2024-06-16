@@ -18,11 +18,13 @@ public class PostEntity {
     private String authorId;
     private String text;
 
-    PostEntity() {}
+    public PostEntity(PostDTO dto) {
+        this.authorId = dto.authorId();
+        this.text = dto.text();
+    }
 
-    public PostEntity(PostDTO post) {
-        this.authorId = post.getAuthorId();
-        this.text = post.getText();
+    public PostEntity() {
+
     }
 
     public Post toPost() {

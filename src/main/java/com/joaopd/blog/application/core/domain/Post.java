@@ -14,9 +14,9 @@ public class Post {
         this.text = text;
     }
 
-    public Post(PostDTO p) {
-        this.authorId = p.getAuthorId();
-        this.text = p.getText();
+    public Post(PostDTO dto) {
+        this.authorId = dto.authorId();
+        this.text = dto.text();
     }
 
     public String getId() {
