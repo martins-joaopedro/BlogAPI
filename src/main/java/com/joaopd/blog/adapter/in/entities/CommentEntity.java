@@ -9,17 +9,21 @@ import jakarta.persistence.*;
 public class CommentEntity {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    String id;
+    @GeneratedValue(strategy = GenerationType.UUID)
+    private String id;
 
-    String authorId;
-
-    @Column(length = 255)
-    String text;
+    private String authorId;
+    private String text;
 
     CommentEntity(CommentDTO dto) {
         this.authorId = dto.authorId();
         this.text = dto.text();
+    }
+
+    public CommentEntity(String id, String authorId, String text) {
+        this.authorId = authorId;
+        this.id = id;
+        this.text = text;
     }
 
     public CommentEntity() {
