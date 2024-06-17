@@ -2,11 +2,9 @@ package com.joaopd.blog.adapter.in.controllers;
 
 import java.util.List;
 
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import com.joaopd.blog.adapter.in.entities.PostEntity;
+import com.joaopd.blog.application.core.dto.CommentDTO;
+import org.springframework.web.bind.annotation.*;
 
 import com.joaopd.blog.application.core.domain.Post;
 import com.joaopd.blog.application.core.dto.PostDTO;
@@ -30,5 +28,10 @@ public class PostController {
     @PostMapping
     public void createPost(@RequestBody PostDTO pDTO) {
         this.service.savePost(pDTO);
+    }
+
+    @PostMapping("/{id}/comment")
+    public void commentPost(@PathVariable String id, @RequestBody CommentDTO dto) {
+        this.service.commentPost(id, dto);
     }
 }

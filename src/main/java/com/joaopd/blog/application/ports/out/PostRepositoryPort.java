@@ -13,4 +13,5 @@ public interface PostRepositoryPort {
 
     Post findById(String id);
 
+    void update(PostEntity p);
 }

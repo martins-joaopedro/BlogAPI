@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.joaopd.blog.adapter.in.entities.PostEntity;
 import com.joaopd.blog.application.core.domain.Post;
+import com.joaopd.blog.application.core.dto.CommentDTO;
 import com.joaopd.blog.application.core.dto.PostDTO;
 import com.joaopd.blog.application.ports.in.PostServicePort;
 import com.joaopd.blog.application.ports.out.PostRepositoryPort;
@@ -28,8 +29,19 @@ public class PostService implements PostServicePort {
 
     @Override
     public void savePost(PostDTO p) {
-        PostEntity entity = new PostEntity(p);
-        this.repository.create(entity);
+        this.repository.create(new PostEntity(p));
     }
-    
+
+    @Override
+    public void updatePost(Post p) {
+        this.repository.update(new PostEntity(p));
+    }
+
+    @Override
+    public void commentPost(String postId, CommentDTO dto) {
+        Post post = findPostById(postId);
+        post.addComment(dto);
+
+        updatePost(post);
+    }
 }

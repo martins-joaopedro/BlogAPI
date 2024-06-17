@@ -27,12 +27,17 @@ public class PostRepository implements PostRepositoryPort {
 
     @Override
     public List<Post> findAll() {
-        List<PostEntity> posts = this.repository.findAll(); 
+        List<PostEntity> posts = this.repository.findAll();
+
+        System.out.println(posts.toString());
+
         return posts
                 .stream()
                 .map(PostEntity::toPost)
                 .collect(Collectors.toList());
     }
+
+
 
     @Override
     public Post findById(String id) {
@@ -43,5 +48,11 @@ public class PostRepository implements PostRepositoryPort {
             return post.get().toPost();
         else return null;
     }
-        
+
+    @Override
+    public void update(PostEntity p) {
+        this.repository.save(p);
+    }
+
+
 }
