@@ -1,5 +1,6 @@
 package com.joaopd.blog.application.core.domain;
 
+import com.joaopd.blog.adapter.in.entities.CommentEntity;
 import com.joaopd.blog.application.core.dto.CommentDTO;
 
 public class Comment {
@@ -18,6 +19,11 @@ public class Comment {
         this.authorId = dto.authorId();
         this.text = dto.text();
     }
+
+    public CommentEntity toEntity() {
+        return new CommentEntity(id, authorId, text);
+    }
+
 
     public String getId() {
         return id;
